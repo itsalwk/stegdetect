@@ -52,6 +52,18 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				/* Steganography theme colors */
+				cyber: {
+					blue: 'hsl(var(--cyber-blue))',
+					purple: 'hsl(var(--cyber-purple))',
+					glow: 'hsl(var(--glow-cyan))'
+				},
+				space: {
+					deep: 'hsl(var(--deep-space))',
+					card: 'hsl(var(--space-card))'
+				},
+				warning: 'hsl(var(--warning-amber))',
+				success: 'hsl(var(--success-green))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
