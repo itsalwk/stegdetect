@@ -1,73 +1,104 @@
-# Welcome to your Lovable project
+# Stegdetect
 
-## Project info
+**Stegdetect** is a web and mobile application for **steganography** (hiding information inside images) and **steganalysis** (detecting hidden information).  
+Built with **React Native** for the frontend and a **Django serverless backend**, it offers a clean, fast, and portable solution for image-based security research and experimentation.
 
-**URL**: https://lovable.dev/projects/0f5d6c24-bd44-472d-bd1c-201eaf78a3fb
+---
 
-## How can I edit this code?
+## 🚀 Features
+- 🔒 **Steganography**: Hide text/messages inside images  
+- 🔍 **Steganalysis**: Detect hidden information in uploaded images  
+- 📱 Cross-platform frontend powered by **React Native**  
+- ⚡ Serverless **Django backend** for lightweight deployments  
+- 📂 Supports common image formats (PNG, JPG, BMP, etc.)  
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 🛠️ Tech Stack
+- **Frontend** → React Native  
+- **Backend** → Django (Serverless)  
+- **Deployment** → AWS Lambda / Vercel / Netlify Functions  
+- **Storage** → Local/Cloud (S3, Firebase, or similar)  
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0f5d6c24-bd44-472d-bd1c-201eaf78a3fb) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📦 Installation
 
-**Use your preferred IDE**
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/stegdetect.git
+cd stegdetect
+````
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 2. Frontend Setup (React Native)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+cd frontend
+npm install
+npm start
 ```
 
-**Edit a file directly in GitHub**
+Run on:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+# Android
+npx react-native run-android
 
-**Use GitHub Codespaces**
+# iOS
+npx react-native run-ios
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### 3. Backend Setup (Django Serverless)
 
-## What technologies are used for this project?
+```bash
+cd backend
+pip install -r requirements.txt
+```
 
-This project is built with:
+Run locally:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```bash
+python manage.py runserver
+```
 
-## How can I deploy this project?
+Deploy to serverless (example: AWS Lambda with Zappa):
 
-Simply open [Lovable](https://lovable.dev/projects/0f5d6c24-bd44-472d-bd1c-201eaf78a3fb) and click on Share -> Publish.
+```bash
+zappa deploy dev
+```
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## ▶️ Usage
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. Open the app on your device
+2. Upload or select an image
+3. Choose:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+   * **Encode** → Hide a message in the image
+   * **Decode/Analyze** → Detect hidden data in an image
+4. View or download the processed image/report
+
+---
+
+## 📸 Screenshots
+
+*Add screenshots or demo GIFs here.*
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork this repository
+2. Create a feature branch (`git checkout -b feature-name`)
+3. Commit changes (`git commit -m 'Add feature'`)
+4. Push to the branch (`git push origin feature-name`)
+5. Open a Pull Request
+
+
+---
+
+👉 Do you want me to also **add a “Roadmap / Future Features” section** so contributors (and you) can track what’s coming next?
+```
