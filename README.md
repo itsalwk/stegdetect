@@ -97,8 +97,3 @@ Contributions are welcome!
 4. Push to the branch (`git push origin feature-name`)
 5. Open a Pull Request
 
-
----
-
-👉 Do you want me to also **add a “Roadmap / Future Features” section** so contributors (and you) can track what’s coming next?
-```
