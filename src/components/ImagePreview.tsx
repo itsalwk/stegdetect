@@ -65,7 +65,7 @@ export const ImagePreview = ({
                 variant="secondary"
                 size="sm"
                 onClick={() => handleDownload(uploadedImage)}
-                className="cyber-glow"
+                className="hand-drawn sketch-shadow"
               >
                 <Download className="w-4 h-4 mr-2" />
                 Download
@@ -91,7 +91,7 @@ export const ImagePreview = ({
                 variant="default"
                 size="sm"
                 onClick={() => handleDownload(processedImage)}
-                className="cyber-glow"
+                className="hand-drawn sketch-shadow"
               >
                 <Download className="w-4 h-4 mr-2" />
                 Download

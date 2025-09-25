@@ -2,67 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Steganography Design System - Deep space cyber theme */
+/* Sketch Design System - Hand-drawn artistic theme */
 
 @layer base {
   :root {
-    /* Base steganography theme - Deep space with cyber accents */
-    --background: 220 25% 6%;
-    --foreground: 210 40% 98%;
+    /* Base sketch theme - Paper white with pencil grays */
+    --background: 35 20% 96%;
+    --foreground: 220 13% 9%;
 
-    --card: 220 25% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 98%;
+    --card-foreground: 220 13% 9%;
 
-    --popover: 220 25% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 98%;
+    --popover-foreground: 220 13% 9%;
 
-    --primary: 200 100% 60%;
-    --primary-foreground: 220 25% 6%;
+    --primary: 220 13% 20%;
+    --primary-foreground: 35 20% 96%;
 
-    --secondary: 240 20% 12%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 14% 88%;
+    --secondary-foreground: 220 13% 20%;
 
-    --muted: 240 15% 10%;
-    --muted-foreground: 210 20% 65%;
+    --muted: 220 14% 92%;
+    --muted-foreground: 220 8% 46%;
 
-    --accent: 280 80% 65%;
-    --accent-foreground: 220 25% 6%;
+    --accent: 25 95% 53%;
+    --accent-foreground: 35 20% 96%;
 
-    --destructive: 0 75% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 35 20% 96%;
 
-    --border: 240 15% 15%;
-    --input: 240 15% 12%;
-    --ring: 200 100% 60%;
+    --border: 220 13% 82%;
+    --input: 0 0% 98%;
+    --ring: 220 13% 20%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Custom steganography design tokens */
-    --cyber-blue: 200 100% 60%;
-    --cyber-purple: 280 80% 65%;
-    --deep-space: 220 25% 6%;
-    --space-card: 220 25% 8%;
-    --glow-cyan: 180 100% 70%;
+    /* Custom sketch design tokens */
+    --sketch-charcoal: 220 13% 20%;
+    --sketch-pencil: 220 8% 46%;
+    --sketch-paper: 35 20% 96%;
+    --sketch-orange: 25 95% 53%;
+    --sketch-blue: 217 91% 60%;
+    --sketch-green: 142 76% 36%;
     --warning-amber: 35 85% 60%;
-    --success-green: 120 60% 50%;
+    --success-green: 142 76% 36%;
     
-    /* Gradients */
-    --gradient-cyber: linear-gradient(135deg, hsl(200 100% 60%), hsl(280 80% 65%));
-    --gradient-dark: linear-gradient(135deg, hsl(220 25% 6%), hsl(240 15% 10%));
-    --gradient-card: linear-gradient(135deg, hsl(220 25% 8%), hsl(240 20% 12%));
-    --gradient-glass: linear-gradient(135deg, hsl(220 25% 8% / 0.8), hsl(240 20% 12% / 0.6));
-    
-    /* Effects */
-    --glow-primary: 0 0 20px hsl(200 100% 60% / 0.3);
-    --glow-accent: 0 0 20px hsl(280 80% 65% / 0.3);
-    --glow-cyan: 0 0 15px hsl(180 100% 70% / 0.4);
-    --shadow-cyber: 0 10px 30px -10px hsl(200 100% 60% / 0.2);
-    --shadow-deep: 0 20px 40px -15px hsl(220 25% 6% / 0.8);
+    /* Hand-drawn effects */
+    --sketch-shadow: 2px 2px 0px hsl(220 13% 20% / 0.1);
+    --sketch-shadow-hover: 4px 4px 0px hsl(220 13% 20% / 0.15);
+    --sketch-border: 2px solid hsl(220 13% 20%);
+    --sketch-border-dashed: 2px dashed hsl(220 8% 46%);
     
     /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-glow: box-shadow 0.3s ease;
-    --pulse-duration: 2s;
+    --transition-smooth: all 0.2s ease-out;
+    --transition-wobble: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --pulse-duration: 3s;
 
     /* Sidebar (if needed) */
     --sidebar-background: 220 25% 8%;
@@ -83,57 +77,109 @@
 
   body {
     @apply bg-background text-foreground;
-    background: linear-gradient(135deg, hsl(var(--deep-space)), hsl(var(--muted)));
+    background: 
+      radial-gradient(circle at 20% 80%, hsl(var(--accent) / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--sketch-blue) / 0.05) 0%, transparent 50%),
+      hsl(var(--background));
     min-height: 100vh;
   }
 
-  /* Custom utility classes for steganography theme */
-  .cyber-glow {
-    box-shadow: var(--glow-primary);
-    transition: var(--transition-glow);
+  /* Custom utility classes for sketch theme */
+  .sketch-shadow {
+    box-shadow: var(--sketch-shadow);
+    transition: var(--transition-smooth);
+    transform: rotate(-0.5deg);
   }
 
-  .cyber-glow:hover {
-    box-shadow: var(--glow-primary), var(--glow-cyan);
+  .sketch-shadow:hover {
+    box-shadow: var(--sketch-shadow-hover);
+    transform: rotate(0deg) scale(1.02);
+    transition: var(--transition-wobble);
   }
 
-  .glass-card {
-    background: var(--gradient-glass);
-    backdrop-filter: blur(10px);
-    border: 1px solid hsl(var(--border));
+  .sketch-card {
+    background: hsl(var(--card));
+    border: var(--sketch-border);
+    border-radius: 8px;
+    position: relative;
+    transform: rotate(-0.3deg);
   }
 
-  .pulse-glow {
-    animation: pulse-glow var(--pulse-duration) ease-in-out infinite alternate;
+  .sketch-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      hsl(var(--border) / 0.1) 2px,
+      hsl(var(--border) / 0.1) 4px
+    );
+    border-radius: 8px;
+    z-index: -1;
   }
 
-  @keyframes pulse-glow {
-    from {
-      box-shadow: var(--glow-primary);
-    }
-    to {
-      box-shadow: var(--glow-primary), var(--glow-accent);
-    }
+  .hand-drawn {
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border: 2px solid hsl(var(--primary));
   }
 
   .drag-zone {
-    background: var(--gradient-card);
-    border: 2px dashed hsl(var(--border));
+    background: hsl(var(--card));
+    border: var(--sketch-border-dashed);
     transition: var(--transition-smooth);
+    border-radius: 8px;
+    position: relative;
   }
 
   .drag-zone.drag-over {
-    border-color: hsl(var(--primary));
-    background: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1));
-    box-shadow: var(--glow-primary);
+    border: 3px solid hsl(var(--primary));
+    background: hsl(var(--primary) / 0.05);
+    transform: scale(1.02) rotate(0.5deg);
   }
 }
 
 @layer components {
-  .stego-gradient-text {
-    background: var(--gradient-cyber);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .sketch-title-text {
+    color: hsl(var(--sketch-charcoal));
+    position: relative;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+
+  .sketch-title-text::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: repeating-linear-gradient(
+      90deg,
+      hsl(var(--accent)) 0px,
+      hsl(var(--accent)) 8px,
+      transparent 8px,
+      transparent 12px
+    );
+    transform: rotate(-0.5deg);
+  }
+
+  .sketch-underline {
+    position: relative;
+  }
+
+  .sketch-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: hsl(var(--accent));
+    transform: rotate(-0.3deg) scaleX(0.9);
   }
 }

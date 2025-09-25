@@ -27,7 +27,7 @@ const SteganographyApp = () => {
         
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
           {/* Upload Section */}
-          <Card className="glass-card p-6 cyber-glow">
+          <Card className="sketch-card p-6 sketch-shadow">
             <ImageUpload 
               onImageUpload={setUploadedImage}
               disabled={isProcessing}
@@ -35,7 +35,7 @@ const SteganographyApp = () => {
           </Card>
 
           {/* Controls Section */}
-          <Card className="glass-card p-6">
+          <Card className="sketch-card p-6 sketch-shadow">
             <StegoControls
               mode={mode}
               onModeChange={setMode}
@@ -48,7 +48,7 @@ const SteganographyApp = () => {
           </Card>
 
           {/* Preview Section */}
-          <Card className="glass-card p-6">
+          <Card className="sketch-card p-6 sketch-shadow">
             <ImagePreview
               uploadedImage={uploadedImage}
               processedImage={processedImage}

@@ -52,15 +52,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				/* Steganography theme colors */
-				cyber: {
-					blue: 'hsl(var(--cyber-blue))',
-					purple: 'hsl(var(--cyber-purple))',
-					glow: 'hsl(var(--glow-cyan))'
-				},
-				space: {
-					deep: 'hsl(var(--deep-space))',
-					card: 'hsl(var(--space-card))'
+				/* Sketch theme colors */
+				sketch: {
+					charcoal: 'hsl(var(--sketch-charcoal))',
+					pencil: 'hsl(var(--sketch-pencil))',
+					paper: 'hsl(var(--sketch-paper))',
+					orange: 'hsl(var(--sketch-orange))',
+					blue: 'hsl(var(--sketch-blue))'
 				},
 				warning: 'hsl(var(--warning-amber))',
 				success: 'hsl(var(--success-green))',

@@ -18,7 +18,7 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80 backdrop-blur-sm",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        cyber: "bg-gradient-to-r from-cyber-blue to-cyber-purple text-white hover:shadow-lg hover:shadow-primary/25 transition-all duration-300",
+        sketch: "bg-sketch-orange text-white border-2 border-sketch-charcoal transform rotate-1 hover:rotate-0 hover:bg-sketch-blue transition-all duration-200 shadow-[3px_3px_0px_hsl(var(--sketch-charcoal))]",
       },
       size: {
         default: "h-10 px-4 py-2",

@@ -227,9 +227,10 @@ export const StegoControls = ({
           <Button
             onClick={handleHideData}
             disabled={!uploadedImage || !message.trim() || isProcessing}
-            className="w-full cyber-glow"
+            className="w-full hand-drawn sketch-shadow"
+            variant="sketch"
           >
-            {isProcessing ? "Hiding Data..." : "Hide Data in Image"}
+            {isProcessing ? "Sketching Data..." : "Draw Data in Image"}
           </Button>
         </TabsContent>
 
@@ -261,10 +262,10 @@ export const StegoControls = ({
           <Button
             onClick={handleExtractData}
             disabled={!uploadedImage || isProcessing}
-            className="w-full"
+            className="w-full hand-drawn"
             variant="secondary"
           >
-            {isProcessing ? "Extracting Data..." : "Extract Hidden Data"}
+            {isProcessing ? "Erasing Data..." : "Erase Hidden Data"}
           </Button>
         </TabsContent>
 
@@ -278,10 +279,10 @@ export const StegoControls = ({
           <Button
             onClick={handleAnalyze}
             disabled={!uploadedImage || isProcessing}
-            className="w-full"
+            className="w-full hand-drawn"
             variant="outline"
           >
-            {isProcessing ? "Analyzing..." : "Analyze Image"}
+            {isProcessing ? "Sketching..." : "Sketch Analysis"}
           </Button>
         </TabsContent>
       </Tabs>
@@ -292,7 +293,7 @@ export const StegoControls = ({
             <span>Processing...</span>
             <span>{progress}%</span>
           </div>
-          <Progress value={progress} className="cyber-glow" />
+          <Progress value={progress} className="hand-drawn" />
         </div>
       )}
     </div>
