@@ -227,10 +227,9 @@ export const StegoControls = ({
           <Button
             onClick={handleHideData}
             disabled={!uploadedImage || !message.trim() || isProcessing}
-            className="w-full hand-drawn sketch-shadow"
-            variant="sketch"
+            className="w-full"
           >
-            {isProcessing ? "Sketching Data..." : "Draw Data in Image"}
+            {isProcessing ? "Embedding Data..." : "Embed Data"}
           </Button>
         </TabsContent>
 
@@ -262,10 +261,9 @@ export const StegoControls = ({
           <Button
             onClick={handleExtractData}
             disabled={!uploadedImage || isProcessing}
-            className="w-full hand-drawn"
-            variant="secondary"
+            className="w-full"
           >
-            {isProcessing ? "Erasing Data..." : "Erase Hidden Data"}
+            {isProcessing ? "Extracting Data..." : "Extract Hidden Data"}
           </Button>
         </TabsContent>
 
@@ -279,10 +277,10 @@ export const StegoControls = ({
           <Button
             onClick={handleAnalyze}
             disabled={!uploadedImage || isProcessing}
-            className="w-full hand-drawn"
-            variant="outline"
+            className="w-full"
+            variant="secondary"
           >
-            {isProcessing ? "Sketching..." : "Sketch Analysis"}
+            {isProcessing ? "Analyzing..." : "Analyze Image"}
           </Button>
         </TabsContent>
       </Tabs>

@@ -2,71 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Sketch Design System - Hand-drawn artistic theme */
+/* Modern Material Design System */
 
 @layer base {
   :root {
-    /* Base sketch theme - Paper white with pencil grays */
-    --background: 35 20% 96%;
-    --foreground: 220 13% 9%;
+    /* Clean, minimal Material Design palette */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 220 13% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 0 0% 98%;
-    --popover-foreground: 220 13% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 220 13% 20%;
-    --primary-foreground: 35 20% 96%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 88%;
-    --secondary-foreground: 220 13% 20%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 220 14% 92%;
-    --muted-foreground: 220 8% 46%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 25 95% 53%;
-    --accent-foreground: 35 20% 96%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 35 20% 96%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 82%;
-    --input: 0 0% 98%;
-    --ring: 220 13% 20%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
 
     --radius: 0.5rem;
 
-    /* Custom sketch design tokens */
-    --sketch-charcoal: 220 13% 20%;
-    --sketch-pencil: 220 8% 46%;
-    --sketch-paper: 35 20% 96%;
-    --sketch-orange: 25 95% 53%;
-    --sketch-blue: 217 91% 60%;
-    --sketch-green: 142 76% 36%;
-    --warning-amber: 35 85% 60%;
-    --success-green: 142 76% 36%;
-    
-    /* Hand-drawn effects */
-    --sketch-shadow: 2px 2px 0px hsl(220 13% 20% / 0.1);
-    --sketch-shadow-hover: 4px 4px 0px hsl(220 13% 20% / 0.15);
-    --sketch-border: 2px solid hsl(220 13% 20%);
-    --sketch-border-dashed: 2px dashed hsl(220 8% 46%);
-    
-    /* Animations */
-    --transition-smooth: all 0.2s ease-out;
-    --transition-wobble: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --pulse-duration: 3s;
+    /* Shadows for depth */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow: 0 1px 3px 0 hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.1), 0 8px 10px -6px hsl(0 0% 0% / 0.1);
 
-    /* Sidebar (if needed) */
-    --sidebar-background: 220 25% 8%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 200 100% 60%;
-    --sidebar-primary-foreground: 220 25% 6%;
-    --sidebar-accent: 240 20% 12%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 240 15% 15%;
-    --sidebar-ring: 200 100% 60%;
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 221 83% 53%;
   }
 }
 
@@ -77,109 +69,85 @@
 
   body {
     @apply bg-background text-foreground;
-    background: 
-      radial-gradient(circle at 20% 80%, hsl(var(--accent) / 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, hsl(var(--sketch-blue) / 0.05) 0%, transparent 50%),
-      hsl(var(--background));
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
     min-height: 100vh;
   }
 
-  /* Custom utility classes for sketch theme */
-  .sketch-shadow {
-    box-shadow: var(--sketch-shadow);
-    transition: var(--transition-smooth);
-    transform: rotate(-0.5deg);
+  /* Material Design elevation shadows */
+  .shadow-material-sm {
+    box-shadow: var(--shadow-sm);
   }
 
-  .sketch-shadow:hover {
-    box-shadow: var(--sketch-shadow-hover);
-    transform: rotate(0deg) scale(1.02);
-    transition: var(--transition-wobble);
+  .shadow-material {
+    box-shadow: var(--shadow);
   }
 
-  .sketch-card {
-    background: hsl(var(--card));
-    border: var(--sketch-border);
-    border-radius: 8px;
-    position: relative;
-    transform: rotate(-0.3deg);
+  .shadow-material-md {
+    box-shadow: var(--shadow-md);
   }
 
-  .sketch-card::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 2px,
-      hsl(var(--border) / 0.1) 2px,
-      hsl(var(--border) / 0.1) 4px
-    );
-    border-radius: 8px;
-    z-index: -1;
+  .shadow-material-lg {
+    box-shadow: var(--shadow-lg);
   }
 
-  .hand-drawn {
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-    border: 2px solid hsl(var(--primary));
+  .shadow-material-xl {
+    box-shadow: var(--shadow-xl);
   }
 
-  .drag-zone {
-    background: hsl(var(--card));
-    border: var(--sketch-border-dashed);
-    transition: var(--transition-smooth);
-    border-radius: 8px;
-    position: relative;
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .drag-zone.drag-over {
-    border: 3px solid hsl(var(--primary));
-    background: hsl(var(--primary) / 0.05);
-    transform: scale(1.02) rotate(0.5deg);
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-smooth hover:shadow-material-md;
+  }
+
+  /* Upload zone */
+  .upload-zone {
+    @apply border-2 border-dashed border-border bg-muted/30 rounded-lg transition-smooth;
+  }
+
+  .upload-zone.drag-over {
+    @apply border-primary bg-primary/5 scale-[1.02];
   }
 }
 
 @layer components {
-  .sketch-title-text {
-    color: hsl(var(--sketch-charcoal));
-    position: relative;
-    font-weight: 900;
-    letter-spacing: -0.02em;
+  /* Hero gradient background */
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%);
   }
 
-  .sketch-title-text::after {
+  /* Glass morphism effect */
+  .glass {
+    background: hsl(var(--background) / 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  /* Ripple effect on click */
+  .ripple {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ripple::after {
     content: '';
     position: absolute;
-    bottom: -4px;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: repeating-linear-gradient(
-      90deg,
-      hsl(var(--accent)) 0px,
-      hsl(var(--accent)) 8px,
-      transparent 8px,
-      transparent 12px
-    );
-    transform: rotate(-0.5deg);
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: hsl(var(--primary) / 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
   }
 
-  .sketch-underline {
-    position: relative;
-  }
-
-  .sketch-underline::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: hsl(var(--accent));
-    transform: rotate(-0.3deg) scaleX(0.9);
+  .ripple:active::after {
+    width: 300px;
+    height: 300px;
   }
 }

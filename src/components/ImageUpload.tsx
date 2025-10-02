@@ -86,7 +86,7 @@ export const ImageUpload = ({ onImageUpload, disabled }: ImageUploadProps) => {
       </h3>
       
       <div
-        className={`drag-zone rounded-lg p-8 text-center transition-all ${
+        className={`upload-zone p-8 text-center ${
           isDragOver ? 'drag-over' : ''
         } ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
         onDrop={handleDrop}
