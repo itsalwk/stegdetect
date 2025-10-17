@@ -10,7 +10,7 @@ export const Header = () => {
       </div>
       
       <div className="space-y-4">
-        <h1 className="text-5xl font-bold sketch-title-text transform -rotate-1">SketchyStego
+        <h1 className="text-5xl font-bold sketch-title-text transform -rotate-1">StegDETECT
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-handwriting">
           Hand-drawn steganography tool for artists and creatives. Hide your secrets 
