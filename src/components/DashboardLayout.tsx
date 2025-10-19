@@ -39,7 +39,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         <Sidebar className="border-r border-border">
           <div className="p-4 border-b border-border flex items-center gap-2">
             <Shield className="w-6 h-6 text-primary" />
-            <span className="font-bold text-lg">StegDetect</span>
+            <span className="font-bold text-lg">StegDETECT</span>
           </div>
           
           <SidebarContent>

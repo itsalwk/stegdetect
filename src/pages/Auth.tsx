@@ -37,7 +37,7 @@ const Auth = () => {
                 <Shield className="w-8 h-8 text-primary" />
               </div>
             </div>
-            <h1 className="text-2xl font-bold">StegDetect</h1>
+            <h1 className="text-2xl font-bold">StegDETECT</h1>
             <p className="text-muted-foreground">
               {isSignUp ? "Create your account" : "Welcome back"}
             </p>

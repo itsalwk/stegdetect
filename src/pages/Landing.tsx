@@ -32,7 +32,7 @@ const Landing = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto space-y-8 animate-fade-in">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              StegDetect
+              StegDETECT
             </h1>
             <p className="text-xl md:text-2xl text-white/90 font-light">
               Hide. Detect. Secure.
@@ -152,7 +152,7 @@ const Landing = () => {
           <div className="max-w-2xl mx-auto space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold">Ready to Get Started?</h2>
             <p className="text-muted-foreground text-lg">
-              Join thousands of users protecting their digital communications with StegDetect
+              Join thousands of users protecting their digital communications with StegDETECT
             </p>
             <Link to="/auth">
               <Button size="lg" className="shadow-material-lg">
@@ -166,7 +166,7 @@ const Landing = () => {
       {/* Footer */}
       <footer className="border-t border-border py-8">
         <div className="container mx-auto px-4 text-center text-muted-foreground text-sm">
-          <p>&copy; 2025 StegDetect. All rights reserved.</p>
+          <p>&copy; 2025 StegDETECT. All rights reserved.</p>
         </div>
       </footer>
     </div>
