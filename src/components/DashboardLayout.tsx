@@ -36,8 +36,8 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">
-        <Sidebar className="border-r border-border">
-          <div className="p-4 border-b border-border flex items-center gap-2">
+        <Sidebar className="glass-sidebar">
+          <div className="p-4 border-b border-border/30 flex items-center gap-2">
             <Shield className="w-6 h-6 text-primary" />
             <span className="font-bold text-lg">StegDETECT</span>
           </div>
@@ -69,7 +69,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
             </SidebarGroup>
           </SidebarContent>
 
-          <div className="p-4 border-t border-border">
+          <div className="p-4 border-t border-border/30">
             <Button
               variant="outline"
               className="w-full justify-start"
@@ -82,7 +82,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         </Sidebar>
 
         <main className="flex-1 flex flex-col">
-          <header className="h-16 border-b border-border bg-background flex items-center px-4 gap-4">
+          <header className="h-16 glass-header flex items-center px-4 gap-4">
             <SidebarTrigger />
             <h1 className="text-xl font-semibold">Dashboard</h1>
           </header>

@@ -6,7 +6,7 @@ const Landing = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+      <header className="glass-header sticky top-0 z-50">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Shield className="w-8 h-8 text-primary" />
@@ -65,8 +65,8 @@ const Landing = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="bg-card rounded-lg p-6 shadow-material card-hover border border-border">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <div className="glass-card rounded-2xl p-6 card-hover">
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                 <Lock className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Steganography</h3>
@@ -75,8 +75,8 @@ const Landing = () => {
               </p>
             </div>
 
-            <div className="bg-card rounded-lg p-6 shadow-material card-hover border border-border">
-              <div className="w-12 h-12 bg-success/10 rounded-lg flex items-center justify-center mb-4">
+            <div className="glass-card rounded-2xl p-6 card-hover">
+              <div className="w-12 h-12 bg-success/10 rounded-xl flex items-center justify-center mb-4">
                 <Search className="w-6 h-6 text-success" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Steganalysis</h3>
@@ -85,8 +85,8 @@ const Landing = () => {
               </p>
             </div>
 
-            <div className="bg-card rounded-lg p-6 shadow-material card-hover border border-border">
-              <div className="w-12 h-12 bg-warning/10 rounded-lg flex items-center justify-center mb-4">
+            <div className="glass-card rounded-2xl p-6 card-hover">
+              <div className="w-12 h-12 bg-warning/10 rounded-xl flex items-center justify-center mb-4">
                 <Shield className="w-6 h-6 text-warning" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Encryption</h3>

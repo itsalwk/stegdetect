@@ -90,13 +90,13 @@ const Steganography = () => {
 
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Upload Section */}
-        <Card className="shadow-material">
+        <Card className="glass-card rounded-2xl">
           <CardHeader>
             <CardTitle>Upload Image</CardTitle>
             <CardDescription>Choose an image to hide your secret message</CardDescription>
           </CardHeader>
           <CardContent>
-            <ImageUpload 
+            <ImageUpload
               onImageUpload={setUploadedImage}
               disabled={isProcessing}
             />
@@ -104,7 +104,7 @@ const Steganography = () => {
         </Card>
 
         {/* Controls Section */}
-        <Card className="shadow-material">
+        <Card className="glass-card rounded-2xl">
           <CardHeader>
             <CardTitle>Secret Message</CardTitle>
             <CardDescription>Enter the data you want to hide</CardDescription>
@@ -168,7 +168,7 @@ const Steganography = () => {
 
         {/* Result Section */}
         {processedImage && (
-          <Card className="shadow-material lg:col-span-2">
+          <Card className="glass-card rounded-2xl lg:col-span-2">
             <CardHeader>
               <CardTitle>Result</CardTitle>
               <CardDescription>Your image with hidden data</CardDescription>
@@ -187,7 +187,7 @@ const Steganography = () => {
                   Download Image
                 </Button>
               </div>
-              <div className="text-sm text-success bg-success/10 p-3 rounded-lg border border-success/20 text-center">
+              <div className="text-sm text-success bg-success/10 p-3 rounded-xl border border-success/20 text-center">
                 ✓ Data successfully hidden in image
               </div>
             </CardContent>
