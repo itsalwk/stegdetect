@@ -1,10 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Shield, Lock, Search, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-
 const Landing = () => {
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="glass-header sticky top-0 z-50">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -46,7 +44,7 @@ const Landing = () => {
                   Start Now <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="min-w-[200px] text-white border-white/30 hover:bg-white/10">
+              <Button size="lg" variant="outline" className="min-w-[200px] border-white/30 hover:bg-white/10 text-slate-950">
                 Learn More
               </Button>
             </div>
@@ -169,8 +167,6 @@ const Landing = () => {
           <p>&copy; 2025 StegDETECT. All rights reserved.</p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Landing;
