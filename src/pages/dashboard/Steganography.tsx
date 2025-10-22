@@ -91,8 +91,8 @@ const Steganography = () => {
   return (
     <div className="p-6 space-y-6">
       <div>
-        <h2 className="text-3xl font-bold mb-2">Steganography</h2>
-        <p className="text-muted-foreground">Hide secret messages in images</p>
+        <h2 className="text-3xl font-bold mb-2">File-in-File Steganography</h2>
+        <p className="text-muted-foreground">Hide secret data in images, audio, and text files</p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">

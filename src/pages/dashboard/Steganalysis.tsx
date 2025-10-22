@@ -111,8 +111,8 @@ const Steganalysis = () => {
   return (
     <div className="p-6 space-y-6">
       <div>
-        <h2 className="text-3xl font-bold mb-2">Steganalysis</h2>
-        <p className="text-muted-foreground">Detect and extract hidden data from images</p>
+        <h2 className="text-3xl font-bold mb-2">File-in-File Steganalysis</h2>
+        <p className="text-muted-foreground">Detect and extract hidden data from images, audio, and text files</p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
