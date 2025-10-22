@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ImageUpload } from "@/components/ImageUpload";
-import { ProcessedImage } from "@/components/SteganographyApp";
+import { FileUpload } from "@/components/FileUpload";
+import { ProcessedFile } from "@/components/SteganographyApp";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
@@ -12,17 +12,22 @@ import { toast } from "sonner";
 import { Progress } from "@/components/ui/progress";
 
 const Steganography = () => {
-  const [uploadedImage, setUploadedImage] = useState<ProcessedImage | null>(null);
+  const [uploadedFile, setUploadedFile] = useState<ProcessedFile | null>(null);
   const [message, setMessage] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [processedImage, setProcessedImage] = useState<ProcessedImage | null>(null);
+  const [processedFile, setProcessedFile] = useState<ProcessedFile | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const handleEmbedData = async () => {
-    if (!uploadedImage || !message.trim()) {
-      toast.error("Please upload an image and enter a message");
+    if (!uploadedFile || !message.trim()) {
+      toast.error("Please upload a file and enter a message");
+      return;
+    }
+
+    if (uploadedFile.type !== 'image' || !uploadedFile.data) {
+      toast.error("Only image files support data hiding currently");
       return;
     }
 
@@ -37,7 +42,7 @@ const Steganography = () => {
       }, 100);
 
       const result = await stegoService.hideData(
-        uploadedImage.data!,
+        uploadedFile.data,
         message,
         password || undefined
       );
@@ -54,9 +59,11 @@ const Steganography = () => {
       canvas.toBlob((blob) => {
         if (blob) {
           const url = URL.createObjectURL(blob);
-          setProcessedImage({
+          setProcessedFile({
             url,
-            name: `stego_${uploadedImage.name}`,
+            name: `stego_${uploadedFile.name}`,
+            type: 'image',
+            file: uploadedFile.file,
             data: result
           });
           toast.success("Data embedded successfully!");
@@ -71,14 +78,14 @@ const Steganography = () => {
     }
   };
 
-  const handleDownload = (image: ProcessedImage) => {
+  const handleDownload = (file: ProcessedFile) => {
     const link = document.createElement('a');
-    link.href = image.url;
-    link.download = image.name;
+    link.href = file.url;
+    link.download = file.name;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    toast.success(`Downloaded: ${image.name}`);
+    toast.success(`Downloaded: ${file.name}`);
   };
 
   return (
@@ -90,21 +97,21 @@ const Steganography = () => {
 
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Upload Section */}
-        <Card className="glass-card rounded-2xl">
+        <Card className="shadow-material rounded-2xl">
           <CardHeader>
-            <CardTitle>Upload Image</CardTitle>
-            <CardDescription>Choose an image to hide your secret message</CardDescription>
+            <CardTitle>Upload File</CardTitle>
+            <CardDescription>Choose a file to hide your secret message</CardDescription>
           </CardHeader>
           <CardContent>
-            <ImageUpload
-              onImageUpload={setUploadedImage}
+            <FileUpload
+              onFileUpload={setUploadedFile}
               disabled={isProcessing}
             />
           </CardContent>
         </Card>
 
         {/* Controls Section */}
-        <Card className="glass-card rounded-2xl">
+        <Card className="shadow-material rounded-2xl">
           <CardHeader>
             <CardTitle>Secret Message</CardTitle>
             <CardDescription>Enter the data you want to hide</CardDescription>
@@ -148,7 +155,7 @@ const Steganography = () => {
 
             <Button
               onClick={handleEmbedData}
-              disabled={!uploadedImage || !message.trim() || isProcessing}
+              disabled={!uploadedFile || !message.trim() || isProcessing}
               className="w-full"
             >
               {isProcessing ? "Embedding..." : "Embed Data"}
@@ -167,28 +174,28 @@ const Steganography = () => {
         </Card>
 
         {/* Result Section */}
-        {processedImage && (
-          <Card className="glass-card rounded-2xl lg:col-span-2">
+        {processedFile && (
+          <Card className="shadow-material rounded-2xl lg:col-span-2">
             <CardHeader>
               <CardTitle>Result</CardTitle>
-              <CardDescription>Your image with hidden data</CardDescription>
+              <CardDescription>Your file with hidden data</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="relative group">
                 <img
-                  src={processedImage.url}
+                  src={processedFile.url}
                   alt="Processed"
                   className="w-full max-w-md mx-auto rounded-lg border border-border"
                 />
               </div>
               <div className="flex justify-center">
-                <Button onClick={() => handleDownload(processedImage)}>
+                <Button onClick={() => handleDownload(processedFile)}>
                   <Download className="w-4 h-4 mr-2" />
-                  Download Image
+                  Download File
                 </Button>
               </div>
               <div className="text-sm text-success bg-success/10 p-3 rounded-xl border border-success/20 text-center">
-                ✓ Data successfully hidden in image
+                ✓ Data successfully hidden in file
               </div>
             </CardContent>
           </Card>

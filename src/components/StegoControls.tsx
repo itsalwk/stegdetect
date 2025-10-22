@@ -7,14 +7,14 @@ import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { Eye, EyeOff, Lock, Unlock, Search, Download } from "lucide-react";
 import { toast } from "sonner";
-import { StegoMode, ProcessedImage } from "./SteganographyApp";
+import { StegoMode, ProcessedFile } from "./SteganographyApp";
 import { SteganographyService } from "@/lib/steganography";
 
 interface StegoControlsProps {
   mode: StegoMode;
   onModeChange: (mode: StegoMode) => void;
-  uploadedImage: ProcessedImage | null;
-  onProcessed: (image: ProcessedImage) => void;
+  uploadedFile: ProcessedFile | null;
+  onProcessed: (file: ProcessedFile) => void;
   onExtracted: (data: string) => void;
   isProcessing: boolean;
   onProcessingChange: (processing: boolean) => void;
@@ -23,7 +23,7 @@ interface StegoControlsProps {
 export const StegoControls = ({
   mode,
   onModeChange,
-  uploadedImage,
+  uploadedFile,
   onProcessed,
   onExtracted,
   isProcessing,
@@ -35,8 +35,13 @@ export const StegoControls = ({
   const [progress, setProgress] = useState(0);
 
   const handleHideData = async () => {
-    if (!uploadedImage || !message.trim()) {
-      toast.error("Please upload an image and enter a message");
+    if (!uploadedFile || !message.trim()) {
+      toast.error("Please upload a file and enter a message");
+      return;
+    }
+
+    if (uploadedFile.type !== 'image' || !uploadedFile.data) {
+      toast.error("Only image files support data hiding currently");
       return;
     }
 
@@ -52,7 +57,7 @@ export const StegoControls = ({
       }, 100);
 
       const result = await stegoService.hideData(
-        uploadedImage.data!,
+        uploadedFile.data,
         message,
         password || undefined
       );
@@ -72,7 +77,9 @@ export const StegoControls = ({
           const url = URL.createObjectURL(blob);
           onProcessed({
             url,
-            name: `hidden_${uploadedImage.name}`,
+            name: `hidden_${uploadedFile.name}`,
+            type: 'image',
+            file: uploadedFile.file,
             data: result
           });
           toast.success("Data hidden successfully!");
@@ -88,8 +95,13 @@ export const StegoControls = ({
   };
 
   const handleExtractData = async () => {
-    if (!uploadedImage) {
-      toast.error("Please upload an image");
+    if (!uploadedFile) {
+      toast.error("Please upload a file");
+      return;
+    }
+
+    if (uploadedFile.type !== 'image' || !uploadedFile.data) {
+      toast.error("Only image files support data extraction currently");
       return;
     }
 
@@ -104,7 +116,7 @@ export const StegoControls = ({
       }, 100);
 
       const extractedData = await stegoService.extractData(
-        uploadedImage.data!,
+        uploadedFile.data,
         password || undefined
       );
 
@@ -127,8 +139,13 @@ export const StegoControls = ({
   };
 
   const handleAnalyze = async () => {
-    if (!uploadedImage) {
-      toast.error("Please upload an image");
+    if (!uploadedFile) {
+      toast.error("Please upload a file");
+      return;
+    }
+
+    if (uploadedFile.type !== 'image' || !uploadedFile.data) {
+      toast.error("Only image files support analysis currently");
       return;
     }
 
@@ -142,7 +159,7 @@ export const StegoControls = ({
         setProgress(prev => Math.min(prev + 12, 90));
       }, 150);
 
-      const analysis = await stegoService.analyzeImage(uploadedImage.data!);
+      const analysis = await stegoService.analyzeImage(uploadedFile.data);
 
       clearInterval(progressInterval);
       setProgress(100);
@@ -226,7 +243,7 @@ export const StegoControls = ({
 
           <Button
             onClick={handleHideData}
-            disabled={!uploadedImage || !message.trim() || isProcessing}
+            disabled={!uploadedFile || !message.trim() || isProcessing}
             className="w-full"
           >
             {isProcessing ? "Embedding Data..." : "Embed Data"}
@@ -260,7 +277,7 @@ export const StegoControls = ({
 
           <Button
             onClick={handleExtractData}
-            disabled={!uploadedImage || isProcessing}
+            disabled={!uploadedFile || isProcessing}
             className="w-full"
           >
             {isProcessing ? "Extracting Data..." : "Extract Hidden Data"}
@@ -276,11 +293,11 @@ export const StegoControls = ({
 
           <Button
             onClick={handleAnalyze}
-            disabled={!uploadedImage || isProcessing}
+            disabled={!uploadedFile || isProcessing}
             className="w-full"
             variant="secondary"
           >
-            {isProcessing ? "Analyzing..." : "Analyze Image"}
+            {isProcessing ? "Analyzing..." : "Analyze File"}
           </Button>
         </TabsContent>
       </Tabs>
@@ -291,7 +308,7 @@ export const StegoControls = ({
             <span>Processing...</span>
             <span>{progress}%</span>
           </div>
-          <Progress value={progress} className="hand-drawn" />
+          <Progress value={progress} />
         </div>
       )}
     </div>

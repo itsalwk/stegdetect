@@ -1,22 +1,25 @@
 import { useState } from "react";
-import { ImageUpload } from "./ImageUpload";
+import { FileUpload } from "./FileUpload";
 import { StegoControls } from "./StegoControls";
-import { ImagePreview } from "./ImagePreview";
+import { FilePreview } from "./FilePreview";
 import { Header } from "./Header";
 import { Card } from "@/components/ui/card";
 
 export type StegoMode = "hide" | "extract" | "analyze";
 
-export interface ProcessedImage {
+export interface ProcessedFile {
   url: string;
   name: string;
-  data?: ImageData;
+  type: 'image' | 'text' | 'audio';
+  file: File;
+  data?: ImageData; // For images
+  textContent?: string; // For text files
 }
 
 const SteganographyApp = () => {
   const [mode, setMode] = useState<StegoMode>("hide");
-  const [uploadedImage, setUploadedImage] = useState<ProcessedImage | null>(null);
-  const [processedImage, setProcessedImage] = useState<ProcessedImage | null>(null);
+  const [uploadedFile, setUploadedFile] = useState<ProcessedFile | null>(null);
+  const [processedFile, setProcessedFile] = useState<ProcessedFile | null>(null);
   const [extractedData, setExtractedData] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -27,20 +30,20 @@ const SteganographyApp = () => {
         
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
           {/* Upload Section */}
-          <Card className="sketch-card p-6 sketch-shadow">
-            <ImageUpload 
-              onImageUpload={setUploadedImage}
+          <Card className="p-6 shadow-material">
+            <FileUpload 
+              onFileUpload={setUploadedFile}
               disabled={isProcessing}
             />
           </Card>
 
           {/* Controls Section */}
-          <Card className="sketch-card p-6 sketch-shadow">
+          <Card className="p-6 shadow-material">
             <StegoControls
               mode={mode}
               onModeChange={setMode}
-              uploadedImage={uploadedImage}
-              onProcessed={setProcessedImage}
+              uploadedFile={uploadedFile}
+              onProcessed={setProcessedFile}
               onExtracted={setExtractedData}
               isProcessing={isProcessing}
               onProcessingChange={setIsProcessing}
@@ -48,10 +51,10 @@ const SteganographyApp = () => {
           </Card>
 
           {/* Preview Section */}
-          <Card className="sketch-card p-6 sketch-shadow">
-            <ImagePreview
-              uploadedImage={uploadedImage}
-              processedImage={processedImage}
+          <Card className="p-6 shadow-material">
+            <FilePreview
+              uploadedFile={uploadedFile}
+              processedFile={processedFile}
               extractedData={extractedData}
               mode={mode}
             />

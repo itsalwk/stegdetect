@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ImageUpload } from "@/components/ImageUpload";
-import { ProcessedImage } from "@/components/SteganographyApp";
+import { FileUpload } from "@/components/FileUpload";
+import { ProcessedFile } from "@/components/SteganographyApp";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { Progress } from "@/components/ui/progress";
 
 const Steganalysis = () => {
-  const [uploadedImage, setUploadedImage] = useState<ProcessedImage | null>(null);
+  const [uploadedFile, setUploadedFile] = useState<ProcessedFile | null>(null);
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [extractedData, setExtractedData] = useState<string | null>(null);
@@ -21,8 +21,13 @@ const Steganalysis = () => {
   const [progress, setProgress] = useState(0);
 
   const handleExtract = async () => {
-    if (!uploadedImage) {
-      toast.error("Please upload an image");
+    if (!uploadedFile) {
+      toast.error("Please upload a file");
+      return;
+    }
+
+    if (uploadedFile.type !== 'image' || !uploadedFile.data) {
+      toast.error("Only image files support data extraction currently");
       return;
     }
 
@@ -38,7 +43,7 @@ const Steganalysis = () => {
       }, 100);
 
       const data = await stegoService.extractData(
-        uploadedImage.data!,
+        uploadedFile.data,
         password || undefined
       );
 
@@ -61,8 +66,13 @@ const Steganalysis = () => {
   };
 
   const handleAnalyze = async () => {
-    if (!uploadedImage) {
-      toast.error("Please upload an image");
+    if (!uploadedFile) {
+      toast.error("Please upload a file");
+      return;
+    }
+
+    if (uploadedFile.type !== 'image' || !uploadedFile.data) {
+      toast.error("Only image files support analysis currently");
       return;
     }
 
@@ -77,7 +87,7 @@ const Steganalysis = () => {
         setProgress(prev => Math.min(prev + 12, 90));
       }, 150);
 
-      const result = await stegoService.analyzeImage(uploadedImage.data!);
+      const result = await stegoService.analyzeImage(uploadedFile.data);
 
       clearInterval(progressInterval);
       setProgress(100);
@@ -109,12 +119,12 @@ const Steganalysis = () => {
         {/* Upload Section */}
         <Card className="shadow-material">
           <CardHeader>
-            <CardTitle>Upload Suspicious Image</CardTitle>
-            <CardDescription>Upload an image to analyze or extract data from</CardDescription>
+            <CardTitle>Upload Suspicious File</CardTitle>
+            <CardDescription>Upload a file to analyze or extract data from</CardDescription>
           </CardHeader>
           <CardContent>
-            <ImageUpload 
-              onImageUpload={setUploadedImage}
+            <FileUpload 
+              onFileUpload={setUploadedFile}
               disabled={isProcessing}
             />
           </CardContent>
@@ -154,14 +164,14 @@ const Steganalysis = () => {
             <div className="grid grid-cols-2 gap-3">
               <Button
                 onClick={handleExtract}
-                disabled={!uploadedImage || isProcessing}
+                disabled={!uploadedFile || isProcessing}
                 className="w-full"
               >
                 Extract Data
               </Button>
               <Button
                 onClick={handleAnalyze}
-                disabled={!uploadedImage || isProcessing}
+                disabled={!uploadedFile || isProcessing}
                 variant="secondary"
                 className="w-full"
               >
