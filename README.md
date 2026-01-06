@@ -26,11 +26,11 @@ Built with **React Native** for the frontend and a **Django serverless backend**
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/stegdetect.git
+git clone https://github.com/itsalwk/stegdetect.git
 cd stegdetect
 ````
 
-### 2. Frontend Setup (React Native)
+### 2. Frontend Setup (React)
 
 ```bash
 cd frontend
@@ -41,11 +41,8 @@ npm start
 Run on:
 
 ```bash
-# Android
-npx react-native run-android
-
-# iOS
-npx react-native run-ios
+# 
+npm run dev
 ```
 
 ### 3. Backend Setup (Django Serverless)
