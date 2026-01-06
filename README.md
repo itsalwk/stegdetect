@@ -1,16 +1,16 @@
 # Stegdetect
 
 **Stegdetect** is a web and mobile application for **steganography** (hiding information inside images) and **steganalysis** (detecting hidden information).  
-Built with **React Native** for the frontend and a **Django serverless backend**, it offers a clean, fast, and portable solution for image-based security research and experimentation.
+Built with **React** for the frontend and a **Django, Supabase (Postgres)** for the backend, it offers a clean, fast, and portable solution for image-based security research and experimentation.
 
 ---
 
 ## 🚀 Features
-- 🔒 **Steganography**: Hide text/messages inside images  
-- 🔍 **Steganalysis**: Detect hidden information in uploaded images  
-- 📱 Cross-platform frontend powered by **React Native**  
-- ⚡ Serverless **Django backend** for lightweight deployments  
-- 📂 Supports common image formats (PNG, JPG, BMP, etc.)  
+- 🔒 **Steganography**: Hide text/image/audio inside textimage/audio 
+- 🔍 **Steganalysis**: Detect hidden information in uploaded image/text/audio
+- 📱 Cross-platform frontend powered by **React**  
+- ⚡ **Supabase, Django ** for backend  
+- 📂 Supports common formats (PNG, JPG, WAV, md etc.)  
 
 ---
 
