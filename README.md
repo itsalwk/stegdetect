@@ -1,11 +1,9 @@
 ## 🛡️ StegDETECT —  Steganalysis & Steganography Tool
 
 <p align="center">
-<picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://www.google.com/search?q=https://via.placeholder.com/500x150%3Ftext%3DStegdetect%2BLight%2BLogo">
-<source media="(prefers-color-scheme: light)" srcset="https://www.google.com/search?q=https://via.placeholder.com/500x150%3Ftext%3DStegdetect%2BDark%2BLogo">
-<img alt="Stegdetect Logo" src="stegdetect-logo.png" width="500">
-</picture>
+  <picture>
+    <img alt="Stegdetect Logo" src="stegdetect-logo.png" width="500">
+  </picture>
 </p>
 
 <p align="center"><strong>HIDE! SEEK!</strong></p>
@@ -23,7 +21,7 @@
 
 It allows you to tuck away secret payloads into digital files or run statistical checks to uncover hidden information in existing media. The frontend provides a sleek UI, while the backend handles the heavy lifting. If you want a fast, reliable, and cloud-synced environment for image and audio-based security research, this is it.
 
-**[Website](#) · [Docs](#) · [Vision](#) · [Getting Started](#quick-start-tldr) · [Showcase](#) · [Docker](#)**
+**[Website](#) · [Docs](#) · [Vision](#) · [Getting Started](#quick-start) · [Showcase](#) · [Docker](#)**
 
 ## ✨ Highlights
 
@@ -40,7 +38,7 @@ It allows you to tuck away secret payloads into digital files or run statistical
 
 ---
 
-## 🚀 Quick Start (TL;DR)
+## 🚀 Quick Start
 
 **Prerequisites:** Node ≥18 and Python ≥3.9. Works with npm, pnpm, or bun.
 
@@ -176,11 +174,8 @@ See `CONTRIBUTING.md` for guidelines, maintainers, and how to submit PRs. Securi
 Special thanks to all contributors who have helped shape Stegdetect.
 
 <p align="left">
-<a href="https://www.google.com/search?q=https://github.com/itsalwk">
-<img src="https://www.google.com/search?q=https://avatars.githubusercontent.com/u/placeholder%3Fv%3D4%26s%3D48" width="48" height="48" alt="itsalwk" title="itsalwk"/>
-</a>
-<<<<<<< HEAD
+  <a href="https://github.com/itsalwk">
+    <img src="https://github.com/itsalwk.png" width="48" height="48" alt="itsalwk" title="itsalwk"/>
+  </a>
 </p>
-=======
-</p>
->>>>>>> 7762eef (Update README.md)
+
