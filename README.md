@@ -179,5 +179,3 @@ Special thanks to all contributors who have helped shape Stegdetect.
 <img src="https://www.google.com/search?q=https://avatars.githubusercontent.com/u/placeholder%3Fv%3D4%26s%3D48" width="48" height="48" alt="itsalwk" title="itsalwk"/>
 </a>
 </p>
-
-```
