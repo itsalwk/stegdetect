@@ -1,10 +1,11 @@
 ## 🛡️ StegDETECT —  Steganalysis & Steganography Tool
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: light)" srcset="https://via.placeholder.com/500x150?text=Stegdetect+Dark">
-    <img src="https://via.placeholder.com/500x150?text=Stegdetect+Logo" alt="Stegdetect" width="500">
-  </picture>
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://www.google.com/search?q=https://via.placeholder.com/500x150%3Ftext%3DStegdetect%2BLight%2BLogo">
+<source media="(prefers-color-scheme: light)" srcset="https://www.google.com/search?q=https://via.placeholder.com/500x150%3Ftext%3DStegdetect%2BDark%2BLogo">
+<img alt="Stegdetect Logo" src="stegdetect-logo.png" width="500">
+</picture>
 </p>
 
 <p align="center"><strong>HIDE! SEEK!</strong></p>
@@ -178,4 +179,8 @@ Special thanks to all contributors who have helped shape Stegdetect.
 <a href="https://www.google.com/search?q=https://github.com/itsalwk">
 <img src="https://www.google.com/search?q=https://avatars.githubusercontent.com/u/placeholder%3Fv%3D4%26s%3D48" width="48" height="48" alt="itsalwk" title="itsalwk"/>
 </a>
+<<<<<<< HEAD
 </p>
+=======
+</p>
+>>>>>>> 7762eef (Update README.md)
