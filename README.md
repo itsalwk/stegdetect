@@ -173,9 +173,4 @@ See `CONTRIBUTING.md` for guidelines, maintainers, and how to submit PRs. Securi
 
 Special thanks to all contributors who have helped shape Stegdetect.
 
-<p align="left">
-  <a href="https://github.com/itsalwk">
-    <img src="https://github.com/itsalwk.png" width="48" height="48" alt="itsalwk" title="itsalwk"/>
-  </a>
-</p>
-
+[![GitHub Profile](https://img.shields.io/badge/Developer-itsalwk-black?style=for-the-badge&logo=github)](https://github.com/itsalwk)
