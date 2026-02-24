@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    /* Pure black */
+    --foreground: 0 0% 100%;
+    /* Pure white */
+    --card: 0 0% 2%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 2%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 100%;
+    /* Pure white buttons default */
+    --primary-foreground: 0 0% 0%;
+    /* Black text on white buttons */
+    --secondary: 0 0% 9%;
+    /* Dark gray */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 9%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 0% 15%;
+    /* Slight hover gray */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    /* Ultra-thin gray border */
+    --input: 0 0% 12%;
+    --ring: 0 0% 90%;
+    --radius: 0.5rem;
+
+    /* New ChatGPT explicit Variables */
+    --bg-base: 0 0% 0%;
+    --text-copy-primary: 0 0% 100%;
+    --bg-btn-primary-base: 0 0% 100%;
+    --bg-btn-primary-base-hover: 0 0% 80%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-black text-white;
+    font-family: "Inter", "Geist", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+
+  /* ChatGPT-style pulsing cursor for typing animations */
+  .typing-cursor {
+    @apply inline-block w-[8px] h-[1.1em] bg-white ml-[2px] align-middle;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* Flat brutalist card style defined in Skills.md */
+  .bento-card {
+    @apply bg-white/5 border border-white/10 rounded-xl p-8 hover:bg-white/10 transition-colors duration-200;
+  }
+}
+
+@layer utilities {
+  .text-h1 {
+    @apply text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.0] text-white text-balance;
+  }
+
+  .text-h5 {
+    @apply text-xl md:text-2xl font-normal leading-relaxed text-balance;
+  }
+
+  .text-footer-link {
+    @apply text-sm font-medium text-white/50 hover:text-white transition-colors;
+  }
+
+  .bg-btn-primary-base {
+    @apply bg-white hover:bg-zinc-200 text-black;
+  }
+
+  .ease-curve-a {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .ease-curve-d {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}

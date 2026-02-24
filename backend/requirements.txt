@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+python-multipart
+pillow
+numpy
+pydantic
+python-dotenv
+cryptography
+scipy
+soundfile
+librosa
+matplotlib
+opencv-python
+pytest
+filetype
