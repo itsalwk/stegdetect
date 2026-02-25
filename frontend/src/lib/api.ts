@@ -12,7 +12,7 @@ export const api = {
     if (secretText) {
       formData.append("secret_text", secretText);
     }
-    if (password) {
+    if (password && password.trim() !== "" && password !== "undefined") {
       formData.append("password", password);
     }
     formData.append("n_bits", nBits.toString());
@@ -33,7 +33,7 @@ export const api = {
   async extractData(stegoFile: File, password?: string, nBits: number = 2) {
     const formData = new FormData();
     formData.append("stego_file", stegoFile);
-    if (password) {
+    if (password && password.trim() !== "" && password !== "undefined") {
       formData.append("password", password);
     }
     formData.append("n_bits", nBits.toString());

@@ -56,13 +56,33 @@ class AudioStegoService:
         
         # Convert data to bits array
         secret_np = np.frombuffer(full_payload, dtype=np.uint8)
-        bits = np.unpackbits(secret_np)
+        
+        if n_bits == 1:
+            values_to_embed = np.unpackbits(secret_np)
+        elif n_bits == 2:
+            values_to_embed = np.empty(len(secret_np) * 4, dtype=np.uint8)
+            values_to_embed[0::4] = (secret_np >> 6) & 0x03
+            values_to_embed[1::4] = (secret_np >> 4) & 0x03
+            values_to_embed[2::4] = (secret_np >> 2) & 0x03
+            values_to_embed[3::4] = secret_np & 0x03
+        elif n_bits == 4:
+            values_to_embed = np.empty(len(secret_np) * 2, dtype=np.uint8)
+            values_to_embed[0::2] = (secret_np >> 4) & 0x0F
+            values_to_embed[1::2] = secret_np & 0x0F
+        else:
+            bits = np.unpackbits(secret_np)
+            padding = (n_bits - (len(bits) % n_bits)) % n_bits
+            if padding:
+                bits = np.pad(bits, (0, padding), 'constant')
+            bits_to_embed = bits.reshape(-1, n_bits)
+            powers_of_two = 2**np.arange(n_bits)[::-1]
+            values_to_embed = np.sum(bits_to_embed * powers_of_two, axis=1).astype(np.int16)
         
         # Flatten audio array
         flat_audio = data.flatten().copy()
         
         # Calculate required samples based on n_bits
-        required_samples = (len(bits) + n_bits - 1) // n_bits
+        required_samples = len(values_to_embed)
         
         if required_samples > len(flat_audio):
             repeats = (required_samples + len(flat_audio) - 1) // len(flat_audio)
@@ -71,18 +91,6 @@ class AudioStegoService:
             else:
                 data = np.tile(data, repeats)
             flat_audio = data.flatten().copy()
-        
-        # Prepare bits for multi-bit injection
-        padding = (n_bits - (len(bits) % n_bits)) % n_bits
-        if padding:
-            bits = np.pad(bits, (0, padding), 'constant')
-            
-        # Reshape bits to (required_samples, n_bits)
-        bits_to_embed = bits.reshape(-1, n_bits)
-        
-        # Create values to add (bits converted to integers)
-        powers_of_two = 2**np.arange(n_bits)[::-1]
-        values_to_embed = np.sum(bits_to_embed * powers_of_two, axis=1).astype(np.int16)
         
         # Mask out the target LSBs and inject new values
         mask = ~((1 << n_bits) - 1)
@@ -112,10 +120,17 @@ class AudioStegoService:
         header_samples = flat_audio[:samples_for_len]
         header_vals = (header_samples & mask).astype(np.uint8)
         
-        header_bits = np.unpackbits(header_vals.reshape(-1, 1), axis=1)[:, -n_bits:].flatten()
-        header_bits = header_bits[:64]
-        
-        header_bytes = np.packbits(header_bits).tobytes()
+        if n_bits == 1:
+            header_bytes = np.packbits(header_vals[:64]).tobytes()
+        elif n_bits == 2:
+            vals = header_vals[:32]
+            header_bytes = ((vals[0::4] << 6) | (vals[1::4] << 4) | (vals[2::4] << 2) | vals[3::4]).tobytes()
+        elif n_bits == 4:
+            vals = header_vals[:16]
+            header_bytes = ((vals[0::2] << 4) | vals[1::2]).tobytes()
+        else:
+            header_bits = np.unpackbits(header_vals.reshape(-1, 1), axis=1)[:, -n_bits:].flatten()
+            header_bytes = np.packbits(header_bits[:64]).tobytes()
         if header_bytes[:4] != b'STG1':
             return None
             
@@ -140,10 +155,21 @@ class AudioStegoService:
         payload_samples = flat_audio[:total_samples_needed]
         payload_vals = (payload_samples & mask).astype(np.uint8)
         
-        all_bits = np.unpackbits(payload_vals.reshape(-1, 1), axis=1)[:, -n_bits:].flatten()
-        payload_bits = all_bits[64 : 64 + data_bits_needed]
+        # Skip the header portion (64 bits = 64/n_bits elements)
+        header_elements = 64 // n_bits
+        payload_data_vals = payload_vals[header_elements : header_elements + (data_bits_needed // n_bits)]
         
-        extracted_data = np.packbits(payload_bits).tobytes()
+        if n_bits == 1:
+            extracted_data = np.packbits(payload_data_vals).tobytes()
+        elif n_bits == 2:
+            extracted_data = ((payload_data_vals[0::4] << 6) | (payload_data_vals[1::4] << 4) | 
+                              (payload_data_vals[2::4] << 2) | payload_data_vals[3::4]).tobytes()
+        elif n_bits == 4:
+            extracted_data = ((payload_data_vals[0::2] << 4) | payload_data_vals[1::2]).tobytes()
+        else:
+            all_bits = np.unpackbits(payload_vals.reshape(-1, 1), axis=1)[:, -n_bits:].flatten()
+            payload_bits = all_bits[64 : 64 + data_bits_needed]
+            extracted_data = np.packbits(payload_bits).tobytes()
         
         if password:
             try:

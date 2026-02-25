@@ -81,13 +81,11 @@ const Steganography = () => {
       // Step 1: Compress
       updateStep("compress", "processing");
       setProgress(20);
-      await new Promise(r => setTimeout(r, 800));
       updateStep("compress", "completed");
 
       // Step 2: Encrypt
       updateStep("encrypt", "processing");
       setProgress(50);
-      await new Promise(r => setTimeout(r, 800));
       updateStep("encrypt", "completed");
 
       // Step 3: Embed
@@ -111,27 +109,6 @@ const Steganography = () => {
       const outputFilename = `stego_${uploadedFile.name.split('.')[0]}.${extension}`;
       const resultFile = new File([blob], outputFilename, { type: mimeType });
 
-      // Upload to Supabase and save history
-      let resultUrl = "";
-      try {
-        const publicUrl = await uploadToSupabase(resultFile);
-        if (publicUrl) resultUrl = publicUrl;
-      } catch (e) {
-        console.warn("Failed to upload to Supabase, continuing with local URL");
-      }
-
-      await addHistoryEntry({
-        filename: outputFilename,
-        type: "Steganography",
-        status: "Success",
-        result_url: resultUrl,
-        details: {
-          n_bits: nBits[0],
-          carrier_type: uploadedFile.type,
-          payload_type: secretType
-        }
-      });
-
       const url = URL.createObjectURL(blob);
       setProcessedFile({
         url,
@@ -141,12 +118,39 @@ const Steganography = () => {
       });
       
       setProgress(100);
-      toast.success("Data embedded and history saved!");
+      toast.success("Data embedded successfully!");
+      setIsProcessing(false); // Enable UI immediately
+      
+      // Upload to Supabase and save history in background
+      (async () => {
+        let resultUrl = "";
+        try {
+          const publicUrl = await uploadToSupabase(resultFile);
+          if (publicUrl) resultUrl = publicUrl;
+        } catch (e) {
+          console.warn("Failed to upload to Supabase, continuing with local URL");
+        }
+
+        try {
+          await addHistoryEntry({
+            filename: outputFilename,
+            type: "Steganography",
+            status: "Success",
+            result_url: resultUrl,
+            details: {
+              n_bits: nBits[0],
+              carrier_type: uploadedFile.type,
+              payload_type: secretType
+            }
+          });
+        } catch (e) {
+          console.warn("History saving failed", e);
+        }
+      })();
 
     } catch (error) {
       toast.error(`Error: ${error instanceof Error ? error.message : 'Failed to hide data'}`);
       setSteps(s => s.map(step => ({ ...step, status: "pending" })));
-    } finally {
       setIsProcessing(false);
     }
   };

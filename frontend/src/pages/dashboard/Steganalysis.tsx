@@ -83,7 +83,7 @@ const Steganalysis = () => {
         toast.success("Hidden file extracted successfully!");
       }
 
-      await addHistoryEntry({
+      addHistoryEntry({
         filename: uploadedFile.name,
         type: "Extraction",
         status: status,
@@ -91,7 +91,7 @@ const Steganalysis = () => {
           n_bits: nBits[0],
           is_text: result.type === 'text'
         }
-      });
+      }).catch(console.warn);
 
     } catch (error) {
       toast.error(`Error: ${error instanceof Error ? error.message : 'Failed to extract data'}`);
@@ -121,13 +121,11 @@ const Steganalysis = () => {
       // Step 1: Scan
       updateStep("scan", "processing");
       setProgress(20);
-      await new Promise(r => setTimeout(r, 800));
       updateStep("scan", "completed");
 
       // Step 2: Features
       updateStep("features", "processing");
       setProgress(50);
-      await new Promise(r => setTimeout(r, 800));
       updateStep("features", "completed");
 
       // Step 3: ML
@@ -143,7 +141,7 @@ const Steganalysis = () => {
       
       const status = result.suspicion_level > 0.5 ? "Detected" : "Safe";
 
-      await addHistoryEntry({
+      addHistoryEntry({
         filename: uploadedFile.name,
         type: "Steganalysis",
         status: status,
@@ -151,7 +149,7 @@ const Steganalysis = () => {
           suspicion_level: result.suspicion_level,
           analysis: result.analysis
         }
-      });
+      }).catch(console.warn);
 
       if (result.suspicion_level > 0.5) {
         toast.warning(`High suspicion of hidden data (${Math.round(result.suspicion_level * 100)}%)`);
