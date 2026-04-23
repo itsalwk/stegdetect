@@ -6,7 +6,7 @@
   </picture>
 </p>
 
-<p align="center"><strong>HIDE! SEEK!</strong></p>
+<p align="center"><strong>HIDE! & SEEK!</strong></p>
 
 <p align="center">
   <a href="https://github.com/itsalwk/stegdetect/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/itsalwk/stegdetect/ci.yml?branch=main&style=for-the-badge" alt="CI status"></a>
