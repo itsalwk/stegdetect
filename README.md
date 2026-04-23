@@ -1,4 +1,4 @@
-## 🛡️ StegDETECT —  Steganalysis & Steganography Tool
+## 🛡️ StegDETECT — Steganalysis & Steganography Web App
 
 <p align="center">
   <picture>
@@ -17,15 +17,16 @@
 
 ---
 
-**Stegdetect** is an open-source security toolkit for steganography (hiding secret messages) and steganalysis (finding them). 
+**Stegdetect** is a complete, full-stack open-source security toolkit for steganography (hiding secret messages) and steganalysis (finding them). 
 
-It allows you to tuck away secret payloads into digital files or run statistical checks to uncover hidden information in existing media. The frontend provides a sleek UI, while the backend handles the heavy lifting using modern asynchronous Python.
+It provides a single, unified web interface to tuck away secret payloads into digital files or run statistical checks to uncover hidden information in existing media. The modern web frontend delivers a sleek and responsive UI, while the robust backend handles heavy lifting utilizing asynchronous Python.
 
-**[Website](#) · [Docs](#) · [Vision](#) · [Getting Started](#quick-start) · [Showcase](#) · [Docker](#)**
+**[Project Report](docs/report.pdf) · [Presentation](docs/presentation.pdf) · [Getting Started](#quick-start) · [Screenshots](#screenshots)**
 
 ## ✨ Highlights
 
 * **Full-Stack Architecture** — Seamless integration between a React/Vite frontend and a FastAPI backend.
+* **Modern Web Interface** — A complete web application offering a responsive and intuitive user experience.
 * **Local-first Processing** — Single control plane for uploading, encoding, and analyzing payloads.
 * **Secure Hiding Spots** — Easily hide text, images, or audio files right inside other media via LSB (Least Significant Bit) encoding.
 * **Deep Detective Work** — Run quick statistical checks on files to detect potential hidden steganographic data.
@@ -35,7 +36,53 @@ It allows you to tuck away secret payloads into digital files or run statistical
 ### Supported Media
 * **Images:** PNG
 * **Audio:** WAV
- 
+
+---
+
+## 📸 Screenshots
+
+Here is a glimpse of the StegDETECT web application in action:
+
+<details>
+<summary><strong>Landing Page</strong></summary>
+<br>
+<img src="docs/screen%20shots/landing-page.png" alt="Landing Page" width="800">
+</details>
+
+<details>
+<summary><strong>Sign In & Sign Up</strong></summary>
+<br>
+<img src="docs/screen%20shots/sign-in-page.png" alt="Sign In Page" width="400">
+<img src="docs/screen%20shots/sign-up-page.png" alt="Sign Up Page" width="400">
+</details>
+
+<details>
+<summary><strong>Steganography (Hiding Data)</strong></summary>
+<br>
+<img src="docs/screen%20shots/steganography-page.png" alt="Steganography Page" width="800">
+</details>
+
+<details>
+<summary><strong>Steganalysis (Detecting Data)</strong></summary>
+<br>
+<img src="docs/screen%20shots/steganalysis-page.png" alt="Steganalysis Page" width="800">
+</details>
+
+<details>
+<summary><strong>History & Settings</strong></summary>
+<br>
+<img src="docs/screen%20shots/history-page.jpg" alt="History Page" width="400">
+<img src="docs/screen%20shots/settings-page.png" alt="Settings Page" width="400">
+</details>
+
+---
+
+## 📄 Project Documents
+
+Learn more about the research, methodology, and theoretical background of StegDETECT:
+* **[Comprehensive Project Report](docs/report.pdf)** - Deep dive into the implementation and results.
+* **[Project Presentation](docs/presentation.pdf)** - Overview slides summarizing the project.
+
 ---
 
 ## 🔍 Methodology (How It Works)
@@ -52,19 +99,9 @@ It allows you to tuck away secret payloads into digital files or run statistical
 
 ---
 
-## � Key Results & Findings
+## 🚀 Quick Start
 
-* **Capacity vs. Quality:** Embedding data across 1-2 bits per byte preserves visual/auditory quality, but higher bit-depths (3-4 bits) noticeably introduce noise and static.
-* **Effective Steganalysis:** The combination of Chi-Square and RS Analysis successfully identifies anomalous color variances and pixel distribution shifts in images altered by LSB steganography.
-* **Compression Efficiency:** Preprocessing the text payloads using `Zlib` significantly reduces the overall footprint, increasing the amount of text that can be safely hidden within the same carrier file.
-* **Robust Security:** AES-GCM encryption provides strong guarantees. Without the correct password, extracting the payload results in completely unreadable byte streams.
-* **Format Sensitivity:** Image steganography is currently bound strictly to lossless formats like PNG. Converting stego-images to lossy formats (like JPG) destroys the precise bit manipulation required to recover the hidden data.
-
----
-
-## �🚀 Quick Start
-
-**Prerequisites:** Node v20 and Python v3.1. Works with npm, pnpm, or bun.
+**Prerequisites:** Node v20 and Python v3.11. Works with npm, pnpm, or bun.
 
 ```bash
 # 1. Clone the repository
@@ -123,13 +160,6 @@ Browser / Web Client
 
 ## ⚙️ Configuration & Skills
 
-### Engineering Guides (Skills)
-We have prepared specialized engineering guides for different parts of the stack:
-- 🎨 [Frontend Developer Guide](skills/frontend-developer-skill.md)
-- ⚙️ [Backend Developer Guide](skills/backend-developer-skill.md)
-- 🛠️ [Full-Stack Developer Guide](skills/full-stack-developer-skill.md)
-- ☁️ [Supabase Cloud Setup Guide](skills/supabase-setup-guide.md)
-
 ### Environment Variables
 
 **Backend (`backend/.env`)**
@@ -151,15 +181,6 @@ VITE_SUPABASE_ANON_KEY=your_anon_key
 * **Encrypted Payloads:** StegDETECT uses AES-GCM for encrypting messages before embedding them into carrier files.
 * **Input Sanitization:** The FastAPI backend strictly validates file headers and mime types using Pillow.
 * **Row Level Security:** Supabase enforces strict RLS policies, ensuring users only access their own data.
-
----
-
-## 🗺️ Roadmap
-
-* [x] **FastAPI Migration:** Complete transition from Flask to FastAPI for better performance.
-* [ ] **Video Support:** Adding support for MP4 and AVI files.
-* [ ] **Advanced Steganalysis:** Implementing RS (Regular-Singular) and Chi-square analysis.
-* [ ] **Mobile App:** Cross-platform mobile version using React Native.
 
 ---
 
