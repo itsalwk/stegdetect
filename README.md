@@ -17,7 +17,7 @@
 
 ---
 
-**Stegdetect** is a complete, full-stack open-source security toolkit for steganography (hiding secret messages) and steganalysis (finding them). 
+**Stegdetect** is a complete, full-stack open-source security toolkit for steganography (hiding secret messages) and steganalysis (finding them).
 
 It provides a single, unified web interface to tuck away secret payloads into digital files or run statistical checks to uncover hidden information in existing media. The modern web frontend delivers a sleek and responsive UI, while the robust backend handles heavy lifting utilizing asynchronous Python.
 
@@ -34,6 +34,7 @@ It provides a single, unified web interface to tuck away secret payloads into di
 * **Type-Safe Development** — Built with TypeScript and Python Type Hints (Pydantic) for maximum reliability.
 
 ### Supported Media
+
 * **Images:** PNG
 * **Audio:** WAV
 
@@ -80,6 +81,7 @@ Here is a glimpse of the StegDETECT web application in action:
 ## 📄 Project Documents
 
 Learn more about the research, methodology, and theoretical background of StegDETECT:
+
 * **[Comprehensive Project Report](docs/report.pdf)** - Deep dive into the implementation and results.
 * **[Project Presentation](docs/presentation.pdf)** - Overview slides summarizing the project.
 
@@ -163,12 +165,14 @@ Browser / Web Client
 ### Environment Variables
 
 **Backend (`backend/.env`)**
+
 ```env
 SUPABASE_URL=your_project_url
 SUPABASE_KEY=your_service_role_key
 ```
 
 **Frontend (`frontend/.env.local`)**
+
 ```env
 VITE_SUPABASE_URL=your_project_url
 VITE_SUPABASE_ANON_KEY=your_anon_key
