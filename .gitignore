@@ -48,3 +48,6 @@ pnpm-debug.log*
 thumbs.db
 Thumbs.db
 ehthumbs.db
+
+# --- Miscellaneous ---
+lint.out

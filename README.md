@@ -1,4 +1,4 @@
-## 🛡️ StegDETECT — Steganalysis & Steganography Web App
+# 🛡️ StegDETECT — Steganalysis & Steganography Web App
 
 <p align="center">
   <picture>
@@ -21,7 +21,7 @@
 
 It provides a single, unified web interface to tuck away secret payloads into digital files or run statistical checks to uncover hidden information in existing media. The modern web frontend delivers a sleek and responsive UI, while the robust backend handles heavy lifting utilizing asynchronous Python.
 
-**[Project Report](docs/report.pdf) · [Presentation](docs/presentation.pdf) · [Getting Started](#quick-start) · [Screenshots](#screenshots)**
+**[Project Report](docs/report.pdf) · [Presentation](docs/presentation.pdf) · [Getting Started](#-quick-start) · [Screenshots](#-screenshots)**
 
 ## ✨ Highlights
 
@@ -47,33 +47,33 @@ Here is a glimpse of the StegDETECT web application in action:
 <details>
 <summary><strong>Landing Page</strong></summary>
 <br>
-<img src="docs/screen%20shots/landing-page.png" alt="Landing Page" width="800">
+<img src="docs/screenshots/landing-page.png" alt="Landing Page" width="800">
 </details>
 
 <details>
 <summary><strong>Sign In & Sign Up</strong></summary>
 <br>
-<img src="docs/screen%20shots/sign-in-page.png" alt="Sign In Page" width="400">
-<img src="docs/screen%20shots/sign-up-page.png" alt="Sign Up Page" width="400">
+<img src="docs/screenshots/sign-in-page.png" alt="Sign In Page" width="400">
+<img src="docs/screenshots/sign-up-page.png" alt="Sign Up Page" width="400">
 </details>
 
 <details>
 <summary><strong>Steganography (Hiding Data)</strong></summary>
 <br>
-<img src="docs/screen%20shots/steganography-page.png" alt="Steganography Page" width="800">
+<img src="docs/screenshots/steganography-page.png" alt="Steganography Page" width="800">
 </details>
 
 <details>
 <summary><strong>Steganalysis (Detecting Data)</strong></summary>
 <br>
-<img src="docs/screen%20shots/steganalysis-page.png" alt="Steganalysis Page" width="800">
+<img src="docs/screenshots/steganalysis-page.png" alt="Steganalysis Page" width="800">
 </details>
 
 <details>
 <summary><strong>History & Settings</strong></summary>
 <br>
-<img src="docs/screen%20shots/history-page.jpg" alt="History Page" width="400">
-<img src="docs/screen%20shots/settings-page.png" alt="Settings Page" width="400">
+<img src="docs/screenshots/history-page.jpg" alt="History Page" width="400">
+<img src="docs/screenshots/settings-page.png" alt="Settings Page" width="400">
 </details>
 
 ---
@@ -121,7 +121,7 @@ cd ../backend
 conda create -n stegdetect python=3.11
 conda activate stegdetect
 pip install -r requirements.txt
-uvicorn main:app --reload
+uvicorn app:app --reload
 ```
 
 ---
