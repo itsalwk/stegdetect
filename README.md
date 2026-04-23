@@ -72,8 +72,8 @@ Here is a glimpse of the StegDETECT web application in action:
 <details>
 <summary><strong>History & Settings</strong></summary>
 <br>
-<img src="docs/screenshots/history-page.jpg" alt="History Page" width="400">
-<img src="docs/screenshots/settings-page.png" alt="Settings Page" width="400">
+<img src="docs/screenshots/history-page.jpg" alt="History Page" width="800">
+<img src="docs/screenshots/settings-page.png" alt="Settings Page" width="800">
 </details>
 
 ---
