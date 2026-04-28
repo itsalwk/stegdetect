@@ -1,5 +1,3 @@
-# 🛡️ StegDETECT — Steganalysis & Steganography Web App
-
 <p align="center">
   <picture>
     <img alt="Stegdetect Logo" src="stegdetect-logo.png" width="500">
