@@ -7,8 +7,6 @@
 <p align="center"><strong>HIDE! & SEEK!</strong></p>
 
 <p align="center">
-  <a href="https://github.com/itsalwk/stegdetect/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/itsalwk/stegdetect/ci.yml?branch=main&style=for-the-badge" alt="CI status"></a>
-  <a href="https://github.com/itsalwk/stegdetect/releases"><img src="https://img.shields.io/github/v/release/itsalwk/stegdetect?include_prereleases&style=for-the-badge" alt="GitHub release"></a>
   <img src="https://img.shields.io/badge/Stack-React%20|%20FastAPI%20|%20Supabase-success.svg?style=for-the-badge" alt="Stack">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License"></a>
 </p>
