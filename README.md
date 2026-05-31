@@ -1,6 +1,6 @@
 <p align="center">
   <picture>
-    <img alt="Stegdetect Logo" src="stegdetect-logo.png" width="500">
+    <img alt="Stegdetect Logo" src="public/screenshots/stegdetect-logo.png" width="500">
   </picture>
 </p>
 
@@ -17,7 +17,7 @@
 
 It provides a single, unified web interface to tuck away secret payloads into digital files or run statistical checks to uncover hidden information in existing media. The modern web frontend delivers a sleek and responsive UI, while the robust backend handles heavy lifting utilizing asynchronous Python.
 
-**[Project Report](docs/report.pdf) · [Presentation](docs/presentation.pdf) · [Getting Started](#-quick-start) · [Screenshots](#-screenshots)**
+**[Getting Started](#-quick-start) · [Screenshots](#-screenshots)**
 
 ## ✨ Highlights
 
@@ -43,43 +43,34 @@ Here is a glimpse of the StegDETECT web application in action:
 <details>
 <summary><strong>Landing Page</strong></summary>
 <br>
-<img src="docs/screenshots/landing-page.png" alt="Landing Page" width="800">
+<img src="public/screenshots/landing-page.png" alt="Landing Page" width="800">
 </details>
 
 <details>
 <summary><strong>Sign In & Sign Up</strong></summary>
 <br>
-<img src="docs/screenshots/sign-in-page.png" alt="Sign In Page" width="400">
-<img src="docs/screenshots/sign-up-page.png" alt="Sign Up Page" width="400">
+<img src="public/screenshots/sign-in-page.png" alt="Sign In Page" width="400">
+<img src="public/screenshots/sign-up-page.png" alt="Sign Up Page" width="400">
 </details>
 
 <details>
 <summary><strong>Steganography (Hiding Data)</strong></summary>
 <br>
-<img src="docs/screenshots/steganography-page.png" alt="Steganography Page" width="800">
+<img src="public/screenshots/steganography-page.png" alt="Steganography Page" width="800">
 </details>
 
 <details>
 <summary><strong>Steganalysis (Detecting Data)</strong></summary>
 <br>
-<img src="docs/screenshots/steganalysis-page.png" alt="Steganalysis Page" width="800">
+<img src="public/screenshots/steganalysis-page.png" alt="Steganalysis Page" width="800">
 </details>
 
 <details>
 <summary><strong>History & Settings</strong></summary>
 <br>
-<img src="docs/screenshots/history-page.jpg" alt="History Page" width="400">
-<img src="docs/screenshots/settings-page.png" alt="Settings Page" width="400">
+<img src="public/screenshots/history-page.jpg" alt="History Page" width="400">
+<img src="public/screenshots/settings-page.png" alt="Settings Page" width="400">
 </details>
-
----
-
-## 📄 Project Documents
-
-Learn more about the research, methodology, and theoretical background of StegDETECT:
-
-* **[Comprehensive Project Report](docs/report.pdf)** - Deep dive into the implementation and results.
-* **[Project Presentation](docs/presentation.pdf)** - Overview slides summarizing the project.
 
 ---
 
